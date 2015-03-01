@@ -89,8 +89,8 @@ uwsgi_application_available_dir:
 {{ conf_state_id }}:
   file.managed:
     {{ sls_block(uwsgi.applications.managed_opts) }}
-    - name: {{ application_curpath(application) }}
-    - source: salt://uwsgi/server/files/application.jinja
+    - name: {{ application_curpath(application) }}.ini
+    - source: salt://uwsgi/files/application.jinja
     - template: jinja
     - context:
         config: {{ settings.config|json() }}
