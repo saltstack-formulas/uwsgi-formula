@@ -6,7 +6,7 @@ include:
   - uwsgi.emperor.install
 
 uwsgi_emperor_service:
-  service.{{ service_funtion }}:
+  service.{{ service_function }}:
     {{ sls_block(uwsgi.service.opts) }}
     - name: {{ uwsgi.lookup.emperor_service }}
     - enable: {{ uwsgi.service.enable }}

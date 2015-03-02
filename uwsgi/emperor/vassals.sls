@@ -1,6 +1,6 @@
 {% from 'uwsgi/map.jinja' import uwsgi, sls_block with context %}
-{% from 'uwsgi/vassal_config.sls' import vassal_states with context %}
-{% from 'uwsgi/service.sls' import service_function with context %}
+{% from 'uwsgi/emperor/vassal_config.sls' import vassal_states with context %}
+{% from 'uwsgi/emperor/service.sls' import service_function with context %}
 
 {% macro file_requisites(states) %}
       {%- for state in states %}
