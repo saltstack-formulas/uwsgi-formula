@@ -65,15 +65,27 @@ Example usage::
 ``uwsgi.emperor.config``
 ------------------------
 
-Manages the uwsgi emperor config file, all variables can be set by pillar
+Manages the uwsgi emperor config file, all variables can be set by pillar.
 
 ``uwsgi.emperor.install``
 -------------------------
 
-Manages the installation of uwsgi package
+Manages the installation of uwsgi package.
+
+``uwsgi.emperor.service``
+-------------------------
+
+Manages the startup and running state of the uwsgi emperor service.
 
 ``uwsgi.emperor.vassal_config``
 -------------------------------
 
-Manages the vassal files for the uwsgi emperor process
+Manages the vassal files for the uwsgi emperor process.
+
+``uwsgi.emperor.vassals``
+-------------------------
+
+Manages the uwsgi emperor vassals ini files and binds them to the service
+calls.
+
 
