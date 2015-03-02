@@ -4,9 +4,16 @@
 
 include:
   - uwsgi.emperor.config
-  - uwsgi.emperor.install
+  - uwsgi.emperor.service
+  - uwsgi.emperor.vassals
 
 extend:
+  uwsgi_emperor_service:
+    service:
+      - watch:
+        - file: uwsgi_emperor_config
+      - require:
+        - file: uwsgi_emperor_config
   uwsgi_emperor_config:
     file:
       - require:

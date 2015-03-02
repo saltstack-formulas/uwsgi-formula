@@ -13,6 +13,7 @@
       'application_enabled'     : '/etc/uwsgi/apps-enabled',
       'application_use_symlink' : True,
       'emperor_pkg'             : 'uwsgi-emperor',
+      'emperor_service'         : 'uwsgi-emperor',
       'emperor_dir'             : '/etc/uwsgi-emperor',
       'vassal_available'        : '/etc/uwsgi-emperor/vassals',
       'vassal_enabled'          : '/etc/uwsgi-emperor/vassals',
@@ -27,6 +28,7 @@
       'application_enabled'     : '/etc/uwsgi',
       'application_use_symlink' : False,
       'emperor_pkg'             : 'uwsgi',
+      'emperor_service'         : 'emperor.uwsgi',
       'emperor_dir'             : '/etc/uwsgi',
       'vassal_available'        : '/etc/uwsgi/vassals',
       'vassal_enabled'          : '/etc/uwsgi/vassals',
@@ -37,6 +39,11 @@
   }, default='Debian' ),
 
   'package': {
+    'opts': {},
+  },
+
+  'service': {
+    'enable': True,
     'opts': {},
   },
 
