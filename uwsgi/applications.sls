@@ -15,7 +15,7 @@ include:
 {% if application_states|length() > 0 %}
 uwsgi_service_reload:
   service.{{ service_function }}:
-    - name: {{ uwsgi.lookup.service }}
+    - name: {{ uwsgi.lookup.uwsgi_service }}
     - reload: True
     - use:
       - service: uwsgi_service

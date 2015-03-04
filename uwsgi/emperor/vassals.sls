@@ -15,7 +15,7 @@ include:
 {% if vassal_states|length() > 0 %}
 uwsgi_emperor_service_reload:
   service.{{ service_function }}:
-    - name: {{ uwsgi.lookup.service }}
+    - name: {{ uwsgi.lookup.emperor_service }}
     - reload: True
     - use:
       - service: uwsgi_emperor_service
