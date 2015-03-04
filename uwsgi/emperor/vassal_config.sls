@@ -90,7 +90,7 @@ uwsgi_vassal_available_dir:
   file.managed:
     {{ sls_block(uwsgi.vassals.managed_opts) }}
     - name: {{ vassal_curpath(vassal) }}
-    - source: salt://uwsgi/server/files/vassal.jinja
+    - source: salt://uwsgi/emperor/files/vassal.jinja
     - template: jinja
     - context:
         config: {{ settings.config|json() }}
