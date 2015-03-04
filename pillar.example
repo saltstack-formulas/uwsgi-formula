@@ -11,7 +11,7 @@ uwsgi:
   # application in the uwsgi server default it will be places in app_available
   application:
     managed:
-      my_test_app: # relative pathname of the application file
+      my_test_app.ini: # relative pathname of the application file
         # may be True, False, or None where True is enabled, False, disabled, and None indicates no action
         enabled: True
 
@@ -39,7 +39,7 @@ uwsgi:
   # vassal configuration for uwsgi emperor
   vassal:
     managed:
-      test_app:
+      test_app.ini:
         enabled: True
         config:
           uid: 'www-data'
