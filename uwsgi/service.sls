@@ -6,7 +6,10 @@ include:
   - uwsgi.install
 
 {% if grains['os_family']=="Arch" %}
-#TODO Archlinux service name should be something like systemd@application_name
+#TODO 
+# still need to figure out how to get applicatication config name
+# as service name and iterate and refresh the right one.
+#
 
 {% elif grains['os_family']=="Debian" %}
 
