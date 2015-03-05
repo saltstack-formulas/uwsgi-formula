@@ -36,10 +36,25 @@ Example usage::
 
 Installs the uwsgi package
 
+``uwsgi.service``
+-----------------
+
+Manages the uwsgi service on Debian systems
+.. note::
+    Archlinux uwsgi service isn't working because of the systemd changes
+    Archlinux uses uwsgi@<application>.service
+    Pull Requests on this are greatly appreciated.
+
+``uwsgi.applications``
+----------------------
+
+Manages the uwsgi applications files and binds them to the service calls
+
 ``uwsgi.application_config``
 ----------------------------
 
-Manages the application files for the uwsgi server
+Manages the application files for the uwsgi server. This state only manages the
+content of the files and does not bind them to the service calls.
 
 ``uwsgi.pip``
 -------------
@@ -80,7 +95,8 @@ Manages the startup and running state of the uwsgi emperor service.
 ``uwsgi.emperor.vassal_config``
 -------------------------------
 
-Manages the vassal files for the uwsgi emperor process.
+Manages the vassal files for the uwsgi emperor process. This state only manages
+the content of the files and does not bind them to the service calls.
 
 ``uwsgi.emperor.vassals``
 -------------------------
