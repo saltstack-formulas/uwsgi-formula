@@ -43,7 +43,8 @@ Manages the uwsgi service on Debian systems
 
 .. note::
 
-    Archlinux uwsgi service isn't working because of the systemd changes
+    Archlinux uwsgi service isn't working because of the systemd changes.
+    
     Archlinux uses uwsgi@<application>.service
     Pull Requests on this are greatly appreciated.
 
