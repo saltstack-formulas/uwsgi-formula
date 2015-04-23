@@ -2,5 +2,5 @@
 
 uwsgi_pip:
   pip.installed:
-    - name {{ salt['pillar.get']('uwsgi:lookup:pip', 'uwsgi') }}
+    - name: {{ salt['pillar.get']('uwsgi:lookup:pip', 'uwsgi') }}
 
