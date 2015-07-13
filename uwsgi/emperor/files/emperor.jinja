@@ -1,6 +1,6 @@
 {% set indent_increment = 4 %}
 
-{%- macro emperor_block(value, key=None, operator=' =  ', delim='', ind=0) -%}
+{%- macro emperor_block(value, key=None, operator=' = ', delim='', ind=0) -%}
     {%- if value != None -%}
     {%- if value is number or value is string -%}
         {{ key|indent(ind, True) }}{{ operator }}{{ value }}{{ delim }}
