@@ -76,19 +76,34 @@
     'managed': {},
   },
 
-  'emperor': {
-    'opts': {},
-    'config': {
-      'autoload': 'true',
-      'master': 'true',
-      'workers': '2',
-      'no-orphans': 'true',
-      'log-date': 'true',
-      'uid': 'www-data',
-      'gid': 'www-data',
-      'emperor': '/etc/uwsgi-emperor/vassals',
+  'emperor': salt['grains.filter_by']({
+    'Debian': {
+      'opts': {},
+      'config': {
+        'autoload': 'true',
+        'master': 'true',
+        'workers': '2',
+        'no-orphans': 'true',
+        'log-date': 'true',
+        'uid': 'www-data',
+        'gid': 'www-data',
+        'emperor': '/etc/uwsgi-emperor/vassals',
+      },
     },
-  },
+    'RedHat': {
+      'opts': {},
+      'config': {
+        'autoload': 'true',
+        'master': 'true',
+        'workers': '2',
+        'no-orphans': 'true',
+        'log-date': 'true',
+        'uid': 'uwsgi',
+        'gid': 'uwsgi',
+        'emperor': '/etc/uwsgi.d',
+      },
+    },
+  }, default='Debian'),
 
   'vassals': {
     'disabled_postfix': '.disabled',
@@ -103,5 +118,8 @@
 
 }, merge=True) %}
 
-
-
+{%- if salt['grains.get']('os_family') == 'RedHat' %}
+  {%- if salt['grains.get']('osmajorrelease')|int < 7 %}
+    {%- do uwsgi['emperor']['config'].update({'daemonize': '/var/log/uwsgi.log'}) %}
+  {%- endif %}
+{%- endif %}
