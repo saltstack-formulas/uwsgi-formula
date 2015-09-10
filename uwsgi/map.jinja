@@ -117,6 +117,8 @@
 
 {%- if salt['grains.get']('os_family') == 'RedHat' %}
   {%- if salt['grains.get']('osmajorrelease')|int < 7 %}
-    {%- do uwsgi['emperor']['config'].update({'daemonize': '/var/log/uwsgi.log'}) %}
+    {%- if 'daemonize' not in uwsgi['emperor']['config'] %}
+      {%- do uwsgi['emperor']['config'].update({'daemonize': '/var/log/uwsgi.log'}) %}
+    {%- endif %}
   {%- endif %}
 {%- endif %}
