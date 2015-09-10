@@ -76,10 +76,10 @@
     'managed': {},
   },
 
-  'emperor': salt['grains.filter_by']({
-    'Debian': {
-      'opts': {},
-      'config': {
+  'emperor': {
+    'opts': {},
+    'config': salt['grains.filter_by']({
+      'Debian': {
         'autoload': 'true',
         'master': 'true',
         'workers': '2',
@@ -89,10 +89,7 @@
         'gid': 'www-data',
         'emperor': '/etc/uwsgi-emperor/vassals',
       },
-    },
-    'RedHat': {
-      'opts': {},
-      'config': {
+      'RedHat': {
         'autoload': 'true',
         'master': 'true',
         'workers': '2',
