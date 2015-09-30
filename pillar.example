@@ -9,7 +9,7 @@ uwsgi:
     opts: {} # this partially exposes parameters of all pkg.installed used
 
   # application in the uwsgi server default it will be places in app_available
-  application:
+  applications:
     managed:
       my_test_app.ini: # relative pathname of the application file
         # may be True, False, or None where True is enabled, False, disabled, and None indicates no action
