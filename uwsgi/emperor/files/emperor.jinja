@@ -26,6 +26,4 @@
 #
 # This file is managed by Salt.
 [uwsgi]
-{% for key, value in config.items() %}
-{{ emperor_block(value, key) }}
-{%- endfor -%}
+{{ emperor_block(config) }}
