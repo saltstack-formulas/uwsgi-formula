@@ -5,11 +5,10 @@
     {%- if value is number or value is string -%}
         {{ key|indent(ind, True) }}{{ operator }}{{ value }}{{ delim }}
     {%- elif value is mapping -%}
-        {{ key|indent(ind, True) }}{{ operator }}{{ '{' }}
+        {{ key|indent(ind, True) }}{{ operator }}
         {%- for k, v in value.items() %}
 {{ application_block(v, k, operator, delim, (ind + indent_increment)) }}
         {%- endfor %}
-{{ '}'|indent(ind, True) }}
     {%- elif value is iterable -%}
         {%- for v in value %}
 {{ application_block(v, key, operator, delim, ind) }}
