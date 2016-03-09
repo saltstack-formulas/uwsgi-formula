@@ -6,7 +6,7 @@
         {{ key|indent(ind, True) }}{{ operator }}{{ value }}{{ delim }}
     {%- elif value is mapping -%}
         {%- for k, v in value.items() %}
-{{ vassal_block(v, k, operator, delim, (ind + indent_increment)) }}
+{{ vassal_block(v, k, operator, delim, ind) }}
         {%- endfor %}
     {%- elif value is iterable -%}
         {%- for v in value %}
