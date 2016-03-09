@@ -5,7 +5,6 @@
     {%- if value is number or value is string -%}
         {{ key|indent(ind, True) }}{{ operator }}{{ value }}{{ delim }}
     {%- elif value is mapping -%}
-        {{ key|indent(ind, True) }}{{ operator }}
         {%- for k, v in value.items() %}
 {{ application_block(v, k, operator, delim, (ind + indent_increment)) }}
         {%- endfor %}
