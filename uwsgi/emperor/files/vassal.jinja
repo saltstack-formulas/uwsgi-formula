@@ -6,11 +6,11 @@
 {{ key|indent(ind, True) }}{{ operator }}{{ value }}{{ delim }}{{ lb }}
     {%- elif value is mapping -%}
         {%- for k, v in value.items() -%}
-{{ vassal_block(v, k, operator, delim, ind) }}
+{{ vassal_block(v, k, operator, lb, delim, ind) }}
         {%- endfor %}
     {%- elif value is iterable -%}
         {%- for v in value -%}
-{{ vassal_block(v, key, operator, delim, ind) }}
+{{ vassal_block(v, key, operator, lb, delim, ind) }}
         {%- endfor -%}
     {%- else -%}
 {{ key|indent(ind, True) }}{{ operator }}{{ value }}{{ delim }}{{ lb }}
