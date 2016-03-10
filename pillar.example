@@ -4,7 +4,7 @@ uwsgi:
     server_pkg: 'uwsgi'
     pip: 'uwsgi'
     plugins: ['uwsgi-plugin-php']
-  
+
   package:
     opts: {} # this partially exposes parameters of all pkg.installed used
 
@@ -17,12 +17,24 @@ uwsgi:
 
         # May be a list of config options or None, if None, no vhost file will be managed/templated
         config:
-          uid: 'www-data'
-          gid: 'www-data'
-          http: '127.0.0.1:8000'
-          plugin: 'python'
-          chdir: '/var/www/python_app'
-          wsgi_file: 'test.py'
+          - master: True
+            uid: 'www-data'
+            gid: 'www-data'
+            http: '127.0.0.1:8000'
+            plugins: 'logfile,python3'
+            module: myproject.wsgi:application
+            chdir: '/var/www/python_app'
+            venv: '/usr/share/python/myproject/'
+            log-master: True
+            log-reopen: True
+          - env: 'SECRET_KEY=secret-key'
+          - env: DATABASE_NAME=project-db
+          - env: DATABASE_HOST=db.example.com
+          - env: DATABASE_USER=project_user
+          - env: 'DATABASE_PASSWORD=secret-password'
+          - if-not-reload: ''
+          - exec-as-user: 'fuse-zip -r /var/www/app001.zip /app'
+          - endif: ''
 
   # This is the uwsgi emperor configuration
   emperor:
