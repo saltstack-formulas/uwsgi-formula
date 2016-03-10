@@ -1,21 +1,19 @@
 {% set indent_increment = 4 %}
 
-{%- macro application_block(value, key=None, operator=' = ', delim='', ind=0) -%}
+{%- macro application_block(value, key=None, operator=' = ', lb='\n', delim='', ind=0) -%}
     {%- if value != None -%}
     {%- if value is number or value is string -%}
-        {{ key|indent(ind, True) }}{{ operator }}{{ value }}{{ delim }}
+{{ key|indent(ind, True) }}{{ operator }}{{ value }}{{ delim }}{{ lb }}
     {%- elif value is mapping -%}
-        {{ key|indent(ind, True) }}{{ operator }}{{ '{' }}
-        {%- for k, v in value.items() %}
-{{ application_block(v, k, operator, delim, (ind + indent_increment)) }}
-        {%- endfor %}
-{{ '}'|indent(ind, True) }}
+        {%- for k, v in value.items() -%}
+{{ application_block(v, k, operator, lb, delim, ind) }}
+        {%- endfor -%}
     {%- elif value is iterable -%}
-        {%- for v in value %}
-{{ application_block(v, key, operator, delim, ind) }}
+        {%- for v in value -%}
+{{ application_block(v, key, operator, lb, delim, ind) }}
         {%- endfor -%}
     {%- else -%}
-        {{ key|indent(ind, True) }}{{ operator }}{{ value }}{{ delim }}
+{{ key|indent(ind, True) }}{{ operator }}{{ value }}{{ delim }}{{ lb }}
     {%- endif -%}
     {%- else -%}
     {%- endif -%}
@@ -27,6 +25,4 @@
 #
 # This file is managed by Salt.
 [uwsgi]
-{% for key, value in config.items() %}
-{{ application_block(value, key) }}
-{%- endfor -%}
+{{ application_block(config) }}
