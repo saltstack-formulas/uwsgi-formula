@@ -3,7 +3,7 @@ uwsgi
 ======
 
 Set up and configure the uwsgi server framework.
-This module is based on the excelent work done in the nginx-formula by the
+This module is based on the excellent work done in the nginx-formula by the
 contributors.
 
 .. note::
