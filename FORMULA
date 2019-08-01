@@ -1,0 +1,9 @@
+name: uwsgi
+os: Debian, Ubuntu, RedHat, Fedora, CentOS, Arch
+os_family: Debian, RedHat, Arch
+version: 1.0.0
+release: 1
+minimum_version: 2017.3
+summary: uwsgi formula
+description: Formula to use to install and configure uwsgi
+top_level_dir: uwsgi
